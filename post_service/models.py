@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
-from .Crawling import crawl_humoruniv_post, crawl_ruliweb_post
+
 
 class Post(models.Model):
     #게시글 제목 : 크롤링해 온 제목

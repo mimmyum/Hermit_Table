@@ -1,10 +1,8 @@
-from django.shortcuts import render
 from django.http.response import HttpResponse
 from django.template.loader import get_template
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.shortcuts import render
+from post_service.static.Crawling import crawling_humoruniv, crawling_ruliweb
 
-from post_service.models import Post
-from .Crawling import crawling_humoruniv, crawling_ruliweb
 
 def post_list(request):
     template = get_template('post_list.html')

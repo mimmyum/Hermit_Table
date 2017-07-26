@@ -56,7 +56,7 @@ def crawling_ruliweb(ruli_board,num) :
         #splitted = str(sub_sites).split('>')
         #post_title = splitted[1].split('<')[0]
         post_title1 = sub_sites.text
-        post_title = post_title1[1:-7]
+        post_title = post_title1[1:-6]
 
         crawl_ruliweb_post.append((post_title,now_line))
 
