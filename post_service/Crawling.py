@@ -66,6 +66,30 @@ def crawling_ruliweb(ruli_board,num) :
 
     return crawl_ruliweb_post
 
+#only for test
+def crawling_freesound(free_board,num) :
+    if num == 0 :
+        crawl_freesound_post.clear()
+
+    now_site = free_board
+
+    now_req = requests.get(now_site)
+    now_content = now_req.content
+    now_soup = BeautifulSoup(now_content,"html.parser")
+    now_result = now_soup.find_all('div',{'class': "sound_filename"})
+
+    splitted = []
+    for sub_sites in now_result :
+        now_line = str(free_board)+ str(sub_sites.find('a')['href'])
+        #splitted = str(sub_sites).split('>')
+        #post_title = splitted[1].split('<')[0]
+        post_title = sub_sites.find('a')['title']
+
+        crawl_freesound_post.append((post_title,now_line))
+
+    return crawl_freesound_post
+#only for test
+
 crawl_site=[]
 crawl_board=[]
 crawl_humoruniv_post=[]
@@ -76,6 +100,13 @@ crawl_board.append('http://web.humoruniv.com/board/humor/')
 crawl_num=0
 
 
+#only for test
+crawl_site.append('http://freesound.org/browse/')
+crawl_freesound_post=[]
+#only for test
+
+
 crawling_humoruniv(crawl_site[crawl_num],0)
 crawling_ruliweb(crawl_site[1],0)
-
+#only for test
+crawling_freesound(crawl_site[2],0)

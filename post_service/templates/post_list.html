@@ -11,7 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
 	<body>
-    <div style="float:left;width:50%">
+    <div style="float:left;width:30%">
 	<h2 class="board_name"> 웃긴대학 </h2>
 		<div id="humoruniv_table">
 			<table class="table_list">
@@ -28,7 +28,7 @@
 	</table>
         </div>
 		</div>
-<div style="float:right;width:50%">
+<div style="float:right;width:30%">
 			<h2 class="board_name"> 루리웹 </h2>
 		<div id="ruliweb_table">
 			<table class="table_list">
@@ -37,6 +37,24 @@
 			</thead>
 			<tbody>
 				{% for post_title, post_url in post_list_ruli %}
+				   <tr>
+						<td class="title"><a href="{{ post_url }}">{{ post_title }}</a></td>
+					</tr>
+				{% endfor %}
+			</tbody>
+	</table>
+		</div>
+</div>
+
+    <div style="float:right;width:30%">
+			<h2 class="board_name"> 프리사운드 </h2>
+		<div id="ruliweb_table">
+			<table class="table_list">
+			<thead>
+				<th width="*">제목</th>
+			</thead>
+			<tbody>
+				{% for post_title, post_url in post_list_free %}
 				   <tr>
 						<td class="title"><a href="{{ post_url }}">{{ post_title }}</a></td>
 					</tr>
