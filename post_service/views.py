@@ -15,8 +15,18 @@ def crawling_humoruniv(sitename, num,crawl_humoruniv_post,crawl_board):
     now_site = sitename
     if num != 0 :
         now_site += "&pg="+str(num)
+
+    #
+    crawl_humoruniv_post.append((now_site,now_site))
+    #
+
     now_req = requests.get(now_site)
     now_content = now_req.content
+
+    #
+    crawl_humoruniv_post.append((now_req,now_req))
+    #
+
     now_soup = BeautifulSoup(now_content,"html.parser")
     now_result = now_soup.find_all('a',{'class':"li"})
 
