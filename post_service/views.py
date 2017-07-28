@@ -92,7 +92,15 @@ def crawling_freesound(free_board,num,crawl_freesound_post) :
 
     now_site = free_board
 
-    now_req = requests.get(now_site)
+    now_req=requests.get(now_site)
+    #
+    crawl_freesound_post.append((now_site,now_site))
+    crawl_freesound_post.append((now_req,now_req))
+
+    #
+
+
+    now_req = requests.get(str("http://")+now_site+str("browse"))
     now_content = now_req.content
 
     #
@@ -135,7 +143,7 @@ def post_list(request):
     crawling_ruliweb(crawl_site[1], 0,crawl_ruliweb_post)
 
     #only for test
-    crawl_site.append('http://freesound.org/browse/')
+    crawl_site.append('www.freesound.org/')
     crawling_freesound(crawl_site[2],0,crawl_freesound_post)
     #only for test
     crawl_freesound_post.append(('1','A'))
