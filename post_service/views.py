@@ -118,6 +118,9 @@ def post_list(request):
     crawl_site.append('http://freesound.org/browse/')
     crawling_freesound(crawl_site[2],0,crawl_freesound_post)
     #only for test
+    crawl_freesound_post.append(('1','A'))
+    crawl_freesound_post.append(('2', 'B'))
+    crawl_freesound_post.append(('3', 'C'))
 
     ctx = {'post_list_humor' : crawl_humoruniv_post, 'post_list_ruli' : crawl_ruliweb_post, 'post_list_free':crawl_freesound_post}
     return HttpResponse(template.render(ctx))
