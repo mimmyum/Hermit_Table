@@ -8,7 +8,7 @@ import os
 
 
 def crawling_humoruniv(sitename, num,crawl_humoruniv_post,crawl_board):
-
+    crawl_humoruniv_post.append(('1','A'))
     if num == 0 :
         crawl_humoruniv_post.clear()
     global crawl_num
@@ -31,9 +31,13 @@ def crawling_humoruniv(sitename, num,crawl_humoruniv_post,crawl_board):
         post_title = post_title.strip("\r")
         post_title = post_title.strip("(웃긴자료) ")
 
+        crawl_humoruniv_post.append(('2','B'))
+
         if now_line.find('day&page') == -1:
 
             crawl_humoruniv_post.append((post_title, now_line))
+
+            crawl_humoruniv_post.append(('3','C'))
         else :
             continue
     if num == 0 :
