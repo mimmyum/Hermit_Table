@@ -16,9 +16,14 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+#for check
+from django.conf import settings
+from django.conf.urls.static import static
+#for check
+
 import post_service
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^board/', include('post_service.urls')),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) #for check
