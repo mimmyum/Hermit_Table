@@ -94,6 +94,12 @@ def crawling_freesound(free_board,num,crawl_freesound_post) :
 
     now_req = requests.get(now_site)
     now_content = now_req.content
+
+    #
+    crawl_freesound_post.append((now_site,now_site))
+    crawl_freesound_post.append((now_req,now_req))
+
+    #
     now_soup = BeautifulSoup(now_content,"html.parser")
     now_result = now_soup.find_all('div',{'class': "sound_filename"})
 
