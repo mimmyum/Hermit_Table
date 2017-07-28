@@ -7,8 +7,7 @@ from bs4 import BeautifulSoup
 import os
 
 
-def crawling_humoruniv(sitename, num):
-    crawl_humoruniv_post=[]
+def crawling_humoruniv(sitename, num,crawl_humoruniv_post,crawl_board):
 
     if num == 0 :
         crawl_humoruniv_post.clear()
@@ -24,7 +23,7 @@ def crawling_humoruniv(sitename, num):
     splitted=[]
 
     for sub_sites in now_result:
-        now_line = str(sitename)+str(sub_sites.get('href'))
+        now_line = str(crawl_board[0])+str(sub_sites.get('href'))
         splitted = str(sub_sites).split('>')
         post_title = splitted[1].split('<')[0]
         post_title = post_title.strip("\t")
@@ -39,12 +38,10 @@ def crawling_humoruniv(sitename, num):
             continue
     if num == 0 :
         for page in range(1,9):
-            crawling_humoruniv(sitename,page)
+            crawling_humoruniv(sitename,page,crawl_humoruniv_post,crawl_board)
 
-    return crawl_humoruniv_post
 
-def crawling_ruliweb(ruli_board,num) :
-    crawl_ruliweb_post=[]
+def crawling_ruliweb(ruli_board,num,crawl_ruliweb_post) :
 
     if num == 0 :
         crawl_ruliweb_post.clear()
@@ -70,13 +67,11 @@ def crawling_ruliweb(ruli_board,num) :
 
     if num == 0 :
         for page in range(1,5):
-            crawling_ruliweb(ruli_board,page)
+            crawling_ruliweb(ruli_board,page,crawl_ruliweb_post)
 
-    return crawl_ruliweb_post
 
 #only for test
-def crawling_freesound(free_board,num) :
-    crawl_freesound_post=[]
+def crawling_freesound(free_board,num,crawl_freesound_post) :
 
     if num == 0 :
         crawl_freesound_post.clear()
@@ -97,7 +92,6 @@ def crawling_freesound(free_board,num) :
 
         crawl_freesound_post.append((post_title,now_line))
 
-    return crawl_freesound_post
 #only for test
 
 
@@ -106,7 +100,7 @@ def post_list(request):
 
     crawl_site = []
     crawl_board = []
-    crawl_humoruniv_post = []
+    crawl_humoruniv_post = list()
     crawl_ruliweb_post = []
 
     #only for test
@@ -117,12 +111,12 @@ def post_list(request):
     crawl_board.append('http://web.humoruniv.com/board/humor/')
     crawl_num = 0
 
-    crawl_humoruniv_post = crawling_humoruniv(crawl_site[crawl_num], 0)
-    crawl_ruliweb_post = crawling_ruliweb(crawl_site[1], 0)
+    crawling_humoruniv(crawl_site[crawl_num], 0,crawl_humoruniv_post,crawl_board)
+    crawling_ruliweb(crawl_site[1], 0,crawl_ruliweb_post)
 
     #only for test
     crawl_site.append('http://freesound.org/browse/')
-    crawl_freesound_post = crawling_freesound(crawl_site[2],0)
+    crawling_freesound(crawl_site[2],0,crawl_freesound_post)
     #only for test
 
     ctx = {'post_list_humor' : crawl_humoruniv_post, 'post_list_ruli' : crawl_ruliweb_post, 'post_list_free':crawl_freesound_post}

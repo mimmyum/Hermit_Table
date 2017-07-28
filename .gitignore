@@ -2,4 +2,6 @@
 *~
 __pycache__
 env_HT
+db.sqlite3
+/static
 .DS_Store
