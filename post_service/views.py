@@ -99,7 +99,7 @@ def crawling_ruliweb_mobile(ruli_board,num,crawl_ruliweb_post) :
 
     if num == 0 :
         for page in range(1,5):
-            crawling_ruliweb(ruli_board,page,crawl_ruliweb_post)
+            crawling_ruliweb_mobile(ruli_board,page,crawl_ruliweb_post)
 
 def post_list(request):
     template = get_template('post_list.html')
