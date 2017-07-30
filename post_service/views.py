@@ -71,6 +71,38 @@ def crawling_ruliweb(ruli_board,num,crawl_ruliweb_post) :
             crawling_ruliweb(ruli_board,page,crawl_ruliweb_post)
 
 
+
+def crawling_ruliweb_mobile(ruli_board,num,crawl_ruliweb_post) :
+
+    if num == 0 :
+        crawl_ruliweb_post.clear()
+
+    now_site = ruli_board
+    if num != 0 :
+        now_site += "?&page=" + str(num)
+
+    now_req = requests.get(now_site)
+    now_content = now_req.content
+    now_soup = BeautifulSoup(now_content,"html.parser")
+    now_result = now_soup.find_all('td',{'class': "subject"})
+
+    splitted = []
+    for sub_sites in now_result :
+        now_line = sub_sites.find('a')['href']
+        #splitted = str(sub_sites).split('>')
+        #post_title = splitted[1].split('<')[0]
+        post_title1 = sub_sites.text
+        #post_title = post_title1[1:-6]
+        post_title1 = post_title1.strip("\n")
+
+        first_enter = post_title1.find("\n")
+        post_title = post_title1[0:first_enter]
+        crawl_ruliweb_post.append((post_title,now_line))
+
+    if num == 0 :
+        for page in range(1,5):
+            crawling_ruliweb(ruli_board,page,crawl_ruliweb_post)
+
 def post_list(request):
     template = get_template('post_list.html')
 
@@ -114,10 +146,10 @@ def post_list_mobile_ruli(request):
     crawl_site = []
     crawl_ruliweb_post = []
 
-    crawl_site.append('http://bbs.ruliweb.com/best')
+    crawl_site.append('http://m.ruliweb.com/best')
     crawl_num = 0
 
-    crawling_ruliweb(crawl_site[0], 0,crawl_ruliweb_post)
+    crawling_ruliweb_mobile(crawl_site[0], 0,crawl_ruliweb_post)
 
 
     ctx = {'post_list_ruli' : crawl_ruliweb_post}
