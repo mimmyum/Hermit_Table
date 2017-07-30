@@ -1,0 +1,38 @@
+	{% load staticfiles %}
+	<!DOCTYPE html>
+	<html lang="ko">
+
+	<head>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="{% static 'css/post.css' %}">
+		<meta charset="UTF-8">
+		<title>Hermit Box</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+    <div style="float:left;width:100%">
+        <h2 class="board_name" > 웃긴대학  </h2>
+        <div class="button-2">
+    <div class="eff-2"></div>
+    <a href="/board/mobile/ruli"> RULIWEB </a>
+    </div>
+
+        <!--<input type="button" value="루리로" style="float:right" onclick="location.href='/board/mobile/ruli'"></h2>-->
+		<div id="humoruniv_table">
+			<table class="table_list">
+			<thead>
+				<th width="*">제목</th>
+			</thead>
+			<tbody>
+				{% for post_title, post_url in post_list_humor %}
+				   <tr>
+						<td class="title"><a href="{{ post_url }}">{{ post_title }}</a></td>
+					</tr>
+				{% endfor %}
+			</tbody>
+	</table>
+        </div>
+		</div>
+	</body>
+	</html>

@@ -90,3 +90,35 @@ def post_list(request):
 
     ctx = {'post_list_humor' : crawl_humoruniv_post, 'post_list_ruli' : crawl_ruliweb_post}
     return HttpResponse(template.render(ctx))
+
+def post_list_mobile(request):
+    template = get_template('post_list_mobile_humor.html')
+
+    crawl_site = []
+    crawl_board = []
+    crawl_humoruniv_post = list()
+
+    crawl_site.append('http://web.humoruniv.com/board/humor/list.html?table=pds')
+    crawl_board.append('http://web.humoruniv.com/board/humor/')
+    crawl_num = 0
+
+    crawling_humoruniv(crawl_site[crawl_num], 0,crawl_humoruniv_post,crawl_board)
+
+    ctx = {'post_list_humor' : crawl_humoruniv_post}
+    return HttpResponse(template.render(ctx))
+
+
+def post_list_mobile_ruli(request):
+    template = get_template('post_list_mobile_ruli.html')
+
+    crawl_site = []
+    crawl_ruliweb_post = []
+
+    crawl_site.append('http://bbs.ruliweb.com/best')
+    crawl_num = 0
+
+    crawling_ruliweb(crawl_site[0], 0,crawl_ruliweb_post)
+
+
+    ctx = {'post_list_ruli' : crawl_ruliweb_post}
+    return HttpResponse(template.render(ctx))

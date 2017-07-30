@@ -47,3 +47,43 @@
     .table_list tbody tr td.title a:visited{
         color:orangered;
     }
+
+
+.button-2{
+  width:140px;
+  height:40px;
+  border:2px solid #34495e;
+  float:right;
+  text-align:center;
+  cursor:pointer;
+  position:fixed;
+  box-sizing:border-box;
+  overflow:hidden;
+    right:15px;
+    top:10px;
+}
+.button-2 a{
+    font-family: -윤고딕320;
+  font-size:16px;
+  color:#34495e;
+  text-decoration:none;
+  line-height:35px;
+  transition:all .5s ease;
+  z-index:2;
+  position:relative;
+}
+.eff-2{
+  width:140px;
+  height:50px;
+  top:-50px;
+  background:#34495e;
+  position:absolute;
+  transition:all .5s ease;
+  z-index:1;
+}
+.button-2:hover .eff-2{
+  top:0;
+}
+.button-2:hover a{
+  color:#fff;
+}
