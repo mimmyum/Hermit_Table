@@ -70,8 +70,6 @@ def crawling_ruliweb(ruli_board,num,crawl_ruliweb_post) :
         for page in range(1,5):
             crawling_ruliweb(ruli_board,page,crawl_ruliweb_post)
 
-
-
 def crawling_ruliweb_mobile(ruli_board,num,crawl_ruliweb_post) :
 
     if num == 0 :
