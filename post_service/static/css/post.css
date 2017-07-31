@@ -87,3 +87,35 @@
 .button-2:hover a{
   color:#fff;
 }
+
+
+.refresh-button{
+  width:40px;
+  height:40px;
+  border:2px solid #34495e;
+  float:right;
+  text-align:center;
+  cursor:pointer;
+  position:fixed;
+  box-sizing:border-box;
+
+  overflow:hidden;
+    right:15px;
+    bottom:10px;
+}
+.refresh-button a{
+    font-family: -윤고딕320;
+  font-size:16px;
+  color:#34495e;
+  text-decoration:none;
+  line-height:35px;
+  transition:all .5s ease;
+  z-index:2;
+  position:relative;
+}
+.refresh-button:hover .eff-2{
+  top:0;
+}
+.refresh-button:hover a{
+  color:#fff;
+}
